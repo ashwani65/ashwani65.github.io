@@ -220,14 +220,14 @@ function typeWriter(element, text, speed = 100) {
 }
 
 // Initialize typing animation when page loads
-window.addEventListener('load', () => {
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
-        const originalText = "Hi, I'm <span class=\"highlight\">Ashwani Singh</span>";
-        heroTitle.innerHTML = '';
-        typeWriter(heroTitle, originalText, 50);
-    }
-});
+// window.addEventListener('load', () => {
+//     const heroTitle = document.querySelector('.hero-title');
+//     if (heroTitle) {
+//         const originalText = "Hi, I'm <span class=\"highlight\">Ashwani Singh</span>";
+//         heroTitle.innerHTML = '';
+//         typeWriter(heroTitle, originalText, 50);
+//     }
+// });
 
 // Parallax effect for hero section
 window.addEventListener('scroll', () => {
@@ -323,9 +323,9 @@ const statsObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.5 });
 
-document.querySelectorAll('.stat').forEach(stat => {
-    statsObserver.observe(stat);
-});
+// document.querySelectorAll('.stat').forEach(stat => {
+//     statsObserver.observe(stat);
+// });
 
 // Add loading animation
 window.addEventListener('load', () => {
