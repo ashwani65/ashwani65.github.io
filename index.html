@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NP2GNBPN');</script>
+    <!-- End Google Tag Manager -->
     <style>
       /* Minimal dark mode styles */
       body.dark-mode {
@@ -90,6 +97,9 @@
     </script>
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP2GNBPN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -105,6 +115,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#hubs" class="nav-link">Guides &amp; Notes</a>
                 </li>
                 <li class="nav-item">
                     <a href="#experience" class="nav-link">Experience</a>
@@ -138,9 +151,9 @@
                     <h1 class="hero-title">
                         Hi, I'm <span class="highlight">Ashwani Singh</span>
                     </h1>
-                    <h2 class="hero-subtitle">Senior Software Engineer & AI/ML Enthusiast</h2>
+                    <h2 class="hero-subtitle">Senior Software Engineer - Backend & GenAI</h2>
                     <p class="hero-description">
-                        Passionate full-stack developer with expertise in building scalable B2B SaaS products. 
+                        Passionate and curious engineer with expertise in building scalable products and AI-powered applications. 
                         Experienced in backend architecture, system design, and leading high-performance teams.
                     </p>
                     <div class="hero-buttons">
@@ -181,12 +194,14 @@
         </div>
     </section>
 
+    
+
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">AI/ML, Automation, and Full-Stack Engineering</p>
+                <p class="section-subtitle">Backend Architecture, Scalable Systems, and GenAI</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
@@ -288,6 +303,64 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Learning Hubs Section (after Projects) -->
+    <section id="hubs" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Guides &amp; Notes</h2>
+                <p class="section-subtitle">Living, long-form notes and mini-sites I publish as I learn and build. Each guide is designed to be practical—concise explanations, visuals, and copy‑pasteable recipes. I’ll keep adding more topics here.</p>
+            </div>
+
+            <div class="guides-slider">
+                <button class="slider-btn prev" aria-label="Previous" data-guides-prev>‹</button>
+                <div class="guides-track" id="guidesTrack">
+                    <div class="project-card guide-card">
+                    <h3 class="project-title">Interactive PyTorch Guide</h3>
+                    <p class="project-desc">
+                        Responsive single-page guide on PyTorch foundations, architectures, transfer learning, engineering, and more.
+                    </p>
+                    <div class="project-tags">
+                        <span>HTML</span><span>Tailwind</span><span>Chart.js</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/ashwani65/interactive-pytorch-guide" target="_blank" class="btn btn-secondary">GitHub</a>
+                        <a href="https://ashwani65.github.io/interactive-pytorch-guide/" target="_blank" class="btn btn-primary">Live</a>
+                    </div>
+                    </div>
+                    <div class="project-card guide-card">
+                    <h3 class="project-title">AI Engineering Notes</h3>
+                    <p class="project-desc">
+                        Curated AI engineering content across foundations, building, deploying, optimizing, and safety.
+                    </p>
+                    <div class="project-tags">
+                        <span>HTML</span><span>Docs</span><span>Mind Map</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/ashwani65/ai-engineering" target="_blank" class="btn btn-secondary">GitHub</a>
+                        <a href="https://ashwani65.github.io/ai-engineering/" target="_blank" class="btn btn-primary">Live</a>
+                    </div>
+                    </div>
+                    <div class="project-card guide-card">
+                        <h3 class="project-title">LLM From Scratch</h3>
+                        <p class="project-desc">
+                            A hands-on study project to build large language model components from first principles: tokenization,
+                            attention, transformer blocks, training loops, and inference utilities.
+                        </p>
+                        <div class="project-tags">
+                            <span>JavaScript</span><span>Transformers</span><span>Education</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/ashwani65/llm-from-scratch" target="_blank" class="btn btn-secondary">GitHub</a>
+                            <a href="https://ashwani65.github.io/llm-from-scratch/" target="_blank" class="btn btn-primary">Live</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="slider-btn next" aria-label="Next" data-guides-next>›</button>
+            </div>
+            <div class="slider-dots" id="guidesDots"></div>
         </div>
     </section>
 
@@ -706,7 +779,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2024 Ashwani Singh. All rights reserved.</p>
+                <p>&copy; 2025 Ashwani Singh. All rights reserved.</p>
                 <div class="footer-links">
                     <a href="#home">Home</a>
                     <a href="#about">About</a>

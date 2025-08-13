@@ -80,32 +80,50 @@ document.querySelectorAll('.timeline-item, .skill-category, .education-card, .st
     observer.observe(el);
 });
 
-// Contact form handling
+// Contact form handling (Netlify-compatible fallback)
 const contactForm = document.getElementById('contact-form');
-contactForm.addEventListener('submit', function(e) {
+contactForm.addEventListener('submit', async function(e) {
     e.preventDefault();
-    
-    // Get form data
+
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
     const formData = new FormData(contactForm);
     const name = formData.get('name');
     const email = formData.get('email');
     const subject = formData.get('subject');
     const message = formData.get('message');
-    
-    // Simple validation
+
     if (!name || !email || !subject || !message) {
         showNotification('Please fill in all fields', 'error');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
         return;
     }
-    
     if (!isValidEmail(email)) {
         showNotification('Please enter a valid email address', 'error');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
         return;
     }
-    
-    // Simulate form submission
-    showNotification('Thank you for your message! I\'ll get back to you soon.', 'success');
-    contactForm.reset();
+
+    // Option 1: mailto fallback (opens client)
+    const mailtoLink = `mailto:ashwani.11803318@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} <${email}>
+
+${message}`)}`;
+
+    try {
+        window.location.href = mailtoLink;
+        showNotification('Opening your email client…', 'success');
+        contactForm.reset();
+    } catch (err) {
+        console.error(err);
+        showNotification('Could not open email client. Please email me directly at ashwani.11803318@gmail.com', 'error');
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+    }
 });
 
 // Email validation
@@ -229,13 +247,14 @@ function typeWriter(element, text, speed = 100) {
 //     }
 // });
 
-// Parallax effect for hero section
+// Lightweight, safe parallax: move only the hero ::before background
 window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
+    const scrolled = window.pageYOffset || document.documentElement.scrollTop;
     const hero = document.querySelector('.hero');
-    if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
+    if (!hero) return;
+    const maxShift = 60; // limit
+    const shift = Math.min(maxShift, scrolled * 0.15);
+    hero.style.setProperty('--hero-shift', `${shift}px`);
 });
 
 // Skills animation on scroll
@@ -345,3 +364,36 @@ loadingStyle.textContent = `
     }
 `;
 document.head.appendChild(loadingStyle);
+
+// Guides slider logic
+(function() {
+  const track = document.getElementById('guidesTrack');
+  if (!track) return; // do nothing if section not on page
+  const prev = document.querySelector('[data-guides-prev]');
+  const next = document.querySelector('[data-guides-next]');
+  const dots = document.getElementById('guidesDots');
+  const cards = Array.from(track.children);
+  let index = 0;
+
+  // build dots
+  cards.forEach((_, i) => {
+    const b = document.createElement('button');
+    if (i === 0) b.classList.add('active');
+    b.addEventListener('click', () => goTo(i));
+    dots.appendChild(b);
+  });
+
+  function updateDots() {
+    Array.from(dots.children).forEach((d, i) => d.classList.toggle('active', i === index));
+  }
+
+  function goTo(i) {
+    index = (i + cards.length) % cards.length;
+    const card = cards[index];
+    track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior: 'smooth' });
+    updateDots();
+  }
+
+  prev.addEventListener('click', () => goTo(index - 1));
+  next.addEventListener('click', () => goTo(index + 1));
+})();
