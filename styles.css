@@ -481,6 +481,11 @@ body.dark-mode .stat p {
     margin-bottom: 0.5rem;
 }
 
+/* Improve contrast for role titles in dark mode */
+body.dark-mode .timeline-header h3 {
+    color: #e5e7eb;
+}
+
 .company {
     font-size: 1.1rem;
     color: #2563eb;
@@ -583,6 +588,7 @@ body.dark-mode .location { color: #cbd5e1; }
     color: #1e293b;
     text-align: center;
 }
+body.dark-mode .skill-category h3 { color: #e5e7eb; }
 
 .skill-items {
     display: grid;
