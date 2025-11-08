@@ -3,6 +3,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import { ThemeToggle } from './components/ThemeToggle';
 import { Navigation } from './components/Navigation';
 import { Projects } from './components/Projects';
+import { LearningHubs } from './components/LearningHubs';
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
             </p>
           </div>
         </section>
+
+        {/* Learning Hubs Section */}
+        <LearningHubs />
 
         {/* Projects Section */}
         <Projects />
